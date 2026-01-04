@@ -134,12 +134,12 @@
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 1000;
+            z-index: 2000;
             background: var(--header-bg);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 15px 0;
+            padding: 10px 0;
             transition: var(--transition);
         }
 
@@ -337,8 +337,14 @@
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
+            gap: 40px;
+            align-items: start;
+        }
+
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
         }
 
         .about-text h3 {
@@ -959,7 +965,7 @@
             </div>
             <div class="hero-image fade-in">
                 <div class="profile-image">
-                    <a href="https://drive.google.com/file/d/19Ds-VD6K-2dgsD910R0tWFYeORVMS4Ax/view?usp=sharing"> Please here to view Pitcher😊<img src="https://drive.google.com/file/d/19Ds-VD6K-2dgsD910R0tWFYeORVMS4Ax/view?usp=sharing" /> </a>
+                    <img src="https://placehold.co/400x533?text=Naveen+Kumar+V" alt="Naveen Kumar V" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
                 </div>
             </div>
         </div>
@@ -1000,41 +1006,38 @@
 			                <span class="date">Aug 2023</span>
                             <p>Java Programming Fundamentals: Mastered core Java concepts (variables, loops, OOP) and applied them to real-world coding challenges.</p>
                         </div>
+						<div class="timeline-item">
 							<span class="date">Jan 2026</span>
 							<p>Academy Accreditation - Generative AI Fundamentals on Databricks</p>
-                    </div>
+                        </div>
+						<div class="timeline-item">
                            <span class="date">Jan 2026</span>
                             <p>Tata's GenAI Powered Data Analytics on</p>
 							<p>Completed a job simulation involving AI-powered data analytics and strategy development for the Financial Services team at Tata iQ.</p>
-							<p>Conducted exploratory data analysis (EDA) using GenAI tools to assess data quality, identify risk indicators, 
-								and structure insights for predictive
- modeling.</p>
-							<p>Proposed and justified an initial no-code predictive modeling framework to assess customer delinquency risk, leveraging GenAI for structured model logic
- and evaluation criteria.</p>
-							<p>Designed an AI-driven collections strategy leveraging agentic AI and
- automation, incorporating ethical AI principles, regulatory compliance, and
- scalable implementation frameworks.</p>
+							<p>Conducted exploratory data analysis (EDA) using GenAI tools to assess data quality, identify risk indicators, and structure insights for predictive modeling.</p>
+							<p>Proposed and justified an initial no-code predictive modeling framework to assess customer delinquency risk, leveraging GenAI for structured model logic and evaluation criteria.</p>
+							<p>Designed an AI-driven collections strategy leveraging agentic AI and automation, incorporating ethical AI principles, regulatory compliance, and scalable implementation frameworks.</p>
                         </div>
-						<span class="date">Sep 2025</span>
+						<div class="timeline-item">
+						    <span class="date">Sep 2025</span>
 							<p>Citi's Technology Software Development on Forage, Sept 2025:</p>
-							 <p>Completed a job simulation involving hypothetical tasks to improve Citi's loan management system and stock market risk reporting
- Created a state diagram of the loan management process using the Unified Modeling Language</p>
-                    </div>
-                  <span class="date">Sep 2021</span>
+							<p>Completed a job simulation involving hypothetical tasks to improve Citi's loan management system and stock market risk reporting Created a state diagram of the loan management process using the Unified Modeling Language</p>
+                        </div>
+						<div class="timeline-item">
+                            <span class="date">Sep 2021</span>
                             <p>Python Programming with Real-Time Industrial Applications: Gained expertise in Python for automation and data analysis, applied in industrial contexts.</p>
                         </div>
-						 
+						<div class="timeline-item">
                             <span class="date">Sep 2025</span>
 							<p>Citi's Technology Software Development on Forage, Sept 2025:</p>
-							 <p>Completed a job simulation involving hypothetical tasks to improve Citi's loan management system and stock market risk reporting
- Created a state diagram of the loan management process using the Unified Modeling Language</p>
-                    </div>
-						 
+							<p>Completed a job simulation involving hypothetical tasks to improve Citi's loan management system and stock market risk reporting Created a state diagram of the loan management process using the Unified Modeling Language</p>
+                        </div>
+						<div class="timeline-item">
                             <span class="date">Sep 2025</span>
                             <p>Tata Cybersecurity Security Analyst Job Simulation on Forage, Sept 2025:</p>
-<p>o Completed a job simulation involving identity and access management (IAM) for Tata Consultancy Services, collaborating with a Cybersecurity Consulting team.</p>
-<p>o Acquired expertise in IAM principles, cybersecurity best practices, and strategic alignment with business objectives.</p>
-<p>o Delivered comprehensive documentation and presentations, showcasing the ability to communicate complex technical concepts effectively. </p>
+                            <p>o Completed a job simulation involving identity and access management (IAM) for Tata Consultancy Services, collaborating with a Cybersecurity Consulting team.</p>
+                            <p>o Acquired expertise in IAM principles, cybersecurity best practices, and strategic alignment with business objectives.</p>
+                            <p>o Delivered comprehensive documentation and presentations, showcasing the ability to communicate complex technical concepts effectively. </p>
                         </div>
 					</div>
                 </div>
