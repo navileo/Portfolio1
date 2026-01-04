@@ -413,6 +413,7 @@
             font-weight: 800;
             background: linear-gradient(to right, var(--text-color), var(--primary));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
         }
@@ -1100,11 +1101,14 @@
                 width: 70%;
                 height: calc(100vh - 70px);
                 background-color: var(--card-bg);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
                 flex-direction: column;
                 align-items: center;
                 padding: 50px 0;
                 transition: var(--transition);
-                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+                border-left: 1px solid var(--glass-border);
             }
             
             .nav-links.active {
@@ -1113,11 +1117,41 @@
             
             .nav-links li {
                 margin: 15px 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+                display: block;
+                padding: 10px;
             }
             
             .mobile-menu-btn {
                 display: block;
                 order: 3;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 8px;
+                background: rgba(37, 99, 235, 0.1);
+                color: var(--primary);
+                transition: var(--transition);
+            }
+
+            .mobile-menu-btn:active {
+                transform: scale(0.9);
+            }
+
+            .hero-text h1 {
+                min-height: auto;
+                margin-bottom: 15px;
+            }
+
+            #typing-text {
+                min-width: auto;
             }
 
             .theme-toggle {
@@ -1201,7 +1235,26 @@
             }
             
             .profile-image {
-                max-width: 300px;
+                width: 220px;
+                height: 220px;
+            }
+
+            .timeline-item {
+                padding-left: 30px;
+            }
+
+            .timeline-item::before {
+                width: 18px;
+                height: 18px;
+                top: 8px;
+            }
+
+            .timeline-item::after {
+                left: 8px;
+            }
+
+            .about-text h3 {
+                font-size: 1.5rem;
             }
         }
     </style>
