@@ -1225,6 +1225,19 @@
             z-index: 1;
         }
 
+        .footer-services-list i {
+            width: 20px;
+            margin-right: 8px;
+            color: var(--primary);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover i {
+            transform: scale(1.2);
+            color: white;
+        }
+
         .cursor {
             color: var(--primary);
             animation: blink 0.7s infinite;
@@ -1819,6 +1832,15 @@ retention by 15%.    </p>
                     <p>Leveraging Generative AI and LLMs to automate workflows, build intelligent chatbots, and accelerate software development and documentation.</p>
                     <a href="#contact" class="btn btn-outline">Learn More</a>
                 </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Data Analytics</h3>
+                    <p>Transforming complex data into actionable insights using AI-powered analytics, exploratory data analysis (EDA), and predictive modeling frameworks.</p>
+                    <a href="#contact" class="btn btn-outline">Learn More</a>
+                </div>
             </div>
         </div>
     </section>
@@ -1915,11 +1937,13 @@ retention by 15%.    </p>
                 
                 <div class="footer-links">
                     <h4>Services</h4>
-                    <ul>
-                        <li><a href="#services">Full-Stack Development</a></li>
-                        <li><a href="#services">Database Optimization</a></li>
-                        <li><a href="#services">API Development</a></li>
-                        <li><a href="#services">Web Applications</a></li>
+                    <ul class="footer-services-list">
+                        <li><a href="#services"><i class="fas fa-code"></i> Full-Stack Development</a></li>
+                        <li><a href="#services"><i class="fas fa-robot"></i> Gen AI Tools</a></li>
+                        <li><a href="#services"><i class="fas fa-cloud"></i> Cloud Services</a></li>
+                        <li><a href="#services"><i class="fas fa-chart-line"></i> Data Analytics</a></li>
+                        <li><a href="#services"><i class="fas fa-plug"></i> API Development</a></li>
+                        <li><a href="#services"><i class="fas fa-database"></i> Database Optimization</a></li>
                     </ul>
                 </div>
             </div>
