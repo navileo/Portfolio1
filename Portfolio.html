@@ -13,17 +13,20 @@
             --secondary: #10b981;
             --dark: #1e293b;
             --light: #f8fafc;
-            --gray: #94a3b8;
+            --gray: #64748b;
             --light-gray: #e2e8f0;
             --bg-color: #f8fafc;
             --text-color: #1e293b;
-            --card-bg: rgba(255, 255, 255, 0.8);
+            --card-bg: #ffffff;
             --header-bg: rgba(255, 255, 255, 0.85);
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             --font-heading: 'Inter', 'Poppins', sans-serif;
             --font-body: 'Inter', 'Roboto', sans-serif;
-            --glass-border: rgba(255, 255, 255, 0.2);
-            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+            --glass-border: #e2e8f0;
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+            --input-bg: #ffffff;
+            --input-border: #cbd5e1;
+            --input-text: #1e293b;
         }
 
         [data-theme="dark"] {
@@ -37,6 +40,9 @@
             --light-gray: #1e293b;
             --glass-border: rgba(255, 255, 255, 0.05);
             --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            --input-bg: rgba(255, 255, 255, 0.05);
+            --input-border: rgba(255, 255, 255, 0.1);
+            --input-text: #e2e8f0;
         }
 
         * {
@@ -132,21 +138,6 @@
             box-shadow: 0 6px 12px rgba(16, 185, 129, 0.3);
         }
 
-        /* Form Messages */
-        #success-message,
-        #error-message {
-            display: none;
-            margin-top: 20px;
-        }
-        
-        #success-message {
-            color: var(--secondary);
-        }
-        
-        #error-message {
-            color: #ef4444;
-        }
-
         /* Header & Navigation */
         header {
             position: fixed;
@@ -185,10 +176,70 @@
             font-size: 1.8rem;
             color: var(--primary);
             text-decoration: none;
+            position: relative;
+            display: inline-block;
+            transition: var(--transition);
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary);
+            text-decoration: none;
+            position: relative;
+            display: inline-block;
+            transition: var(--transition);
+            animation: logoFloat 3s ease-in-out infinite;
         }
 
         .logo span {
             color: var(--secondary);
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            color: var(--secondary);
+            text-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+        }
+
+        .logo:hover span {
+            transform: rotate(20deg) scale(1.2);
+            color: var(--primary);
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .about-text ul {
+            margin-top: 10px;
+            padding-left: 20px;
+            list-style: none;
+        }
+
+        .about-text ul li {
+            position: relative;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .about-text ul li::before {
+            content: '•';
+            color: var(--primary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
 
         .nav-links {
@@ -516,18 +567,78 @@
             font-size: 0.95rem;
             color: var(--gray);
             line-height: 1.6;
-            background: rgba(255, 255, 255, 0.03);
+            background: var(--input-bg);
             padding: 15px;
             border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
             transition: var(--transition);
         }
 
         .timeline-item:hover p {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(37, 99, 235, 0.2);
+            background: var(--input-bg);
+            border-color: var(--primary);
             transform: translateX(5px);
             color: var(--text-color);
+        }
+
+        .timeline-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .timeline-text {
+            flex: 1;
+        }
+
+        .company-logo {
+            flex-shrink: 0;
+            width: 150px;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 15px;
+            border: 2px solid #2563eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .company-logo img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .timeline-item:hover .company-logo {
+            transform: none;
+        }
+
+        .timeline-item:hover .company-logo img {
+            transform: none;
+            filter: none;
+        }
+
+        .timeline-item ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .timeline-item ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--gray);
+            line-height: 1.5;
+        }
+
+        .timeline-item ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
         }
 
         /* Portfolio Section */
@@ -691,6 +802,9 @@
 
         .portfolio-btns {
             margin-top: auto;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
         .portfolio-btns .btn {
@@ -703,13 +817,13 @@
         /* Services Section */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
         @media (max-width: 992px) {
             .services-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             }
         }
 
@@ -720,49 +834,99 @@
         }
 
         .service-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
             padding: 40px 30px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: var(--glass-shadow);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
 
-        [data-theme="dark"] .service-card {
-            background: rgba(30, 41, 59, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), transparent);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
 
         .service-card:hover {
+            transform: translateY(-12px) scale(1.02);
             border-color: var(--primary);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+            background: var(--card-bg);
+        }
+
+        [data-theme="dark"] .service-card:hover {
+            background: rgba(30, 41, 59, 0.8);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
         }
 
         .service-icon {
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 50%;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 25px;
             color: white;
-            font-size: 1.8rem;
+            font-size: 2rem;
+            transition: transform 0.4s ease;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        }
+
+        .service-card:hover .service-icon {
+            transform: rotateY(180deg);
+        }
+
+        .ai-icon {
+            background: linear-gradient(135deg, #8b5cf6, #d946ef);
+            box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3);
         }
 
         .service-card h3 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin-bottom: 15px;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--text-color), var(--gray));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .service-card p {
             color: var(--gray);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .service-card .btn-outline {
+            border-color: rgba(37, 99, 235, 0.3);
+            padding: 10px 25px;
+            font-size: 0.9rem;
+        }
+
+        .service-card:hover .btn-outline {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
         }
 
         /* Contact Section */
@@ -794,7 +958,7 @@
             align-items: center;
             margin-bottom: 20px;
             padding: 15px;
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--input-bg);
             border-radius: 16px;
             border: 1px solid var(--glass-border);
             transition: var(--transition);
@@ -803,7 +967,7 @@
         }
 
         .contact-item:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--input-bg);
             transform: translateX(10px) scale(1.02);
             border-color: var(--primary);
             box-shadow: var(--glass-shadow);
@@ -842,26 +1006,43 @@
             text-decoration: none;
             transition: var(--transition);
             font-size: 0.95rem;
-            opacity: 0.9;
-            word-break: break-all;
+            font-weight: 500;
         }
 
-        .contact-text a:hover {
-            opacity: 1;
+        .contact-text a.btn-link {
+            display: inline-block;
+            margin-top: 5px;
+            padding: 6px 16px;
+            background: rgba(37, 99, 235, 0.1);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .contact-text a.btn-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+
+        .contact-text a:not(.btn-link):hover {
             text-decoration: underline;
         }
 
         .contact-form {
-            background: rgba(255, 255, 255, 0.8);
+            background: var(--card-bg);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             padding: 40px;
             border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--glass-shadow);
+            border: 1px solid var(--glass-border);
         }
 
         [data-theme="dark"] .contact-form {
-            background: rgba(30, 41, 59, 0.8);
+            background: var(--card-bg);
         }
 
         .form-group {
@@ -877,8 +1058,9 @@
         .form-control {
             width: 100%;
             padding: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: var(--input-bg);
+            border: 1px solid var(--input-border);
+            color: var(--input-text);
             border-radius: 8px;
             font-family: inherit;
             font-size: 1rem;
@@ -887,7 +1069,7 @@
 
         .form-control:focus {
             outline: none;
-            background: rgba(255, 255, 255, 0.2);
+            background: var(--input-bg);
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
         }
@@ -937,10 +1119,27 @@
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            transition: var(--transition);
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .footer-logo:hover {
+            transform: scale(1.05) translateX(5px);
+            background: linear-gradient(to right, var(--secondary), #fff);
+            background-clip: text;
+            -webkit-background-clip: text;
         }
 
         .footer-logo span {
             color: var(--secondary);
+            display: inline-block;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            -webkit-text-fill-color: var(--secondary);
+        }
+
+        .footer-logo:hover span {
+            transform: scale(1.5) rotate(360deg);
         }
 
         .footer-about {
@@ -1265,7 +1464,17 @@
             }
 
             .timeline-item::after {
-                left: 8px;
+                left: 7px;
+            }
+
+            .timeline-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .company-logo {
+                width: 100px;
+                align-self: flex-start;
             }
 
             .about-text h3 {
@@ -1290,10 +1499,10 @@
                     <li><a href="#services">Services</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">
+                <button id="theme-toggle" class="theme-toggle">
                     <i class="fas fa-moon"></i>
                 </button>
-                <button class="mobile-menu-btn" type="button" aria-label="Toggle mobile menu">
+                <button class="mobile-menu-btn">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
@@ -1328,16 +1537,35 @@
             </div>
             <div class="about-content">
                 <div class="about-text fade-in">
-                    <h3>Software Engineer &amp; Full-Stack Developer</h3>
+                    <h3>Software Engineer & Full-Stack Developer</h3>
                     <p>Detail-oriented Software Engineer with a B.E. in Computer Science and hands-on experience in full-stack web development, RESTful API design, and database optimization.</p>
                     <p>Proficient in Python, Java, JavaScript, React, Node.js, and MySQL, with a proven track record of building scalable web applications and solving complex technical challenges.</p>
                     <p>Adept at collaborating in high-trust, cross-functional teams to deliver impactful solutions. Passionate about leveraging technology to drive innovation and sustainability.</p>
                     
                     <div class="timeline">
                         <div class="timeline-item fade-in">
+                            <div class="timeline-content">
+                                <div class="timeline-text">
+                                    <h4>Internship</h4>
+                                    <span class="date">Current</span>
+                                    <p><strong>Full Stack Web Development Intern — Unified Mentor</strong></p>
+                                    <ul>
+                                        <li>Built responsive Blog Platform and Real-Time Chat App (Socket.IO, MongoDB) for multi-user engagement.</li>
+                                        <li>Developed Expense Tracker, Weather App, and Image Slider with modern UI/UX and responsive design.</li>
+                                        <li>Created Secure & Share GovDocs and Gym Management System using Firebase for secure storage and real-time sync.</li>
+                                        <li>Designed CareerGuide platform with Supabase, gamified aptitude tests, and dual portals.</li>
+                                        <li>Integrated CI/CD pipelines reducing deployment time by 25%, and applied Generative AI tools to accelerate coding and documentation.</li>
+                                    </ul>
+                                </div>
+                                <div class="company-logo">
+                                     <img src="https://unifiedmentor.com/assets/Colored%20Logo-DMx5DaFN.png" alt="Unified Mentor Logo">
+                                 </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item fade-in">
                             <h4>Education</h4>
                             <span class="date">Jan 2022 - Jul 2024</span>
-                            <p>B.E., Computer Science, MVJ College of Engineering, Visvesvaraya Technological University, Bangalore, Karnataka</p>
+                            <p>B.E., Computer Science, MVJ College of Engineering, Visvesvaraya Technological University, Bangalore, Karnataka (CGPA: 7.39/10.0)</p>
                             <p>Relevant coursework: Data Structures, OOPS, DBMS, Internet Technology, Computer Architecture...</p>
                         </div>
 						<div class="timeline-item fade-in">
@@ -1348,7 +1576,7 @@
                     </div>
                 </div>
 				  <div class="about-certifications fade-in">
-                    
+                            <h3>Certifications</h3>                   
 						<div class="timeline-item">
 							<span class="date">Jan 2026</span>
 							<p>Academy Accreditation - Generative AI Fundamentals on Databricks</p>
@@ -1368,7 +1596,6 @@
                         </div>
                         <div class="timeline">
                         <div class="timeline-item">
-                            <h4>Certifications</h4>
 			                <span class="date">Aug 2023</span>
                             <p>Java Programming Fundamentals: Mastered core Java concepts (variables, loops, OOP) and applied them to real-world coding challenges.</p>
                         </div>
@@ -1401,43 +1628,78 @@
                 <h2>My Portfolio</h2>
                 <p>Explore some of my recent projects and case studies</p>
             </div>
-			<div class="portfolio-grid">
-		   <div class="portfolio-item fade-in">
-                    <div class="portfolio-img"><span>Weather Application</span></div>
+            <div class="portfolio-grid">
+                <!-- Secure & Share GovDocs -->
+                <div class="portfolio-item fade-in">
+                    <div class="portfolio-img"><span>SecureDoc Preview</span></div>
                     <div class="portfolio-content">
-                        <h3>Weather Application</h3>
-                        <p>Developed a responsive weather app with real-time OpenWeatherMap API integration, 
-				async/await for efficient data handling, robust error management, and a clean,
-				cross-device UI with weather icons</p>
+                        <h3>Secure & Share GovDocs</h3>
+                        <p>The <strong>Secure & Share GovDocs</strong> application provides a safe platform to store, categorize, and share sensitive government documents. With advanced OTP authentication, restricted sharing, and dynamic categorization, it ensures both security and user-friendly access.</p>
                         <div class="tech-stack">
-                           <span class="tech">HTML</span>
-				<span class="tech">CSS</span>
-                            <span class="tech">JavaScript</span>
-                            <span class="tech">OpenWeatherMap API</span>
-                            </div>
+                            <span class="tech">Firebase</span>
+                            <span class="tech">JavaScript (ES6)</span>
+                            <span class="tech">HTML5/CSS3</span>
+                            <span class="tech">Jest</span>
+                            <span class="tech">OTP Auth</span>
+                        </div>
                         <div class="portfolio-btns">
-                            <a href="https://navileo.github.io/weather-app/" class="btn btn-outline">live View</a>
+                            <a href="https://github.com/navileo/Secure-and-Share-Government-Document" class="btn btn-outline">GitHub</a>
+                            <a href="https://shareweb-c1ab0.web.app/" class="btn">Live Demo</a>
                         </div>
                     </div>
                 </div>
-		   <div class="portfolio-item fade-in">
-                    <div class="portfolio-img"><span>Secure Government Document Sharing System</span></div>
+                <!-- Chat Application -->
+                <div class="portfolio-item fade-in">
+                    <div class="portfolio-img"><span>ChatStream Preview</span></div>
                     <div class="portfolio-content">
-                        <h3>Secure Government Document Sharing System</h3>
-                        <p>Developed a secure Aadhaar-linked document sharing app with Firebase Authentication (OTP, RBAC), 
-			  full CRUD with audit logging, performance optimizations, and deployment/testing on Firebase 
-			Hosting &amp; Emulator Suite.</p>
+                        <h3>Chat Application</h3>
+                        <p>A chat application enables users to exchange instant messages in real time across devices, fostering seamless communication. With features like multimedia sharing, emojis, and responsive design, it creates an engaging and interactive user experience.</p>
                         <div class="tech-stack">
-                           <span class="tech">HTML</span>
-				<span class="tech">CSS</span>
+                            <span class="tech">Node.js</span>
+                            <span class="tech">Socket.io</span>
+                            <span class="tech">Express</span>
                             <span class="tech">JavaScript</span>
-                            <span class="tech">Firebase</span>
-                          </div>
-                        <div class="portfolio-btns">
-                            <a href="https://shareweb-c1ab0.web.app/" class="btn btn-outline">live View</a>
-							<div class="portfolio-btns">
-                            <a href="https://github.com/navileo/Secure-and-Share-Government-Document" class="btn btn-outline">GitHub</a>
+                            <span class="tech">HTML/CSS</span>
                         </div>
+                        <div class="portfolio-btns">
+                            <a href="https://github.com/navileo/Chat-Application?tab=readme-ov-file" class="btn btn-outline">GitHub</a>
+                            <a href="https://chat-application-puf8.onrender.com/" class="btn">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Weather Application -->
+                <div class="portfolio-item fade-in">
+                    <div class="portfolio-img"><span>Weather App Preview</span></div>
+                    <div class="portfolio-content">
+                        <h3>Weather Application</h3>
+                        <p>A weather application provides real-time forecasts by fetching data from APIs, showing temperature, conditions, and icons. With dynamic backgrounds, responsive design, and error handling, it delivers a modern and user-friendly experience.</p>
+                        <div class="tech-stack">
+                            <span class="tech">JavaScript</span>
+                            <span class="tech">OpenWeather API</span>
+                            <span class="tech">HTML5/CSS3</span>
+                            <span class="tech">REST API</span>
+                        </div>
+                        <div class="portfolio-btns">
+                            <a href="https://github.com/navileo/weather-app" class="btn btn-outline">GitHub</a>
+                            <a href="https://navileo.github.io/weather-app/" class="btn">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Expense Tracker -->
+                <div class="portfolio-item fade-in">
+                    <div class="portfolio-img"><span>FinanceFlow Preview</span></div>
+                    <div class="portfolio-content">
+                        <h3>Expense Tracker</h3>
+                        <p>An expense tracker helps users monitor income and spending in real time, offering clear financial insights. With charts, summaries, and responsive design, it simplifies budgeting and promotes better money management.</p>
+                        <div class="tech-stack">
+                            <span class="tech">JavaScript</span>
+                            <span class="tech">Chart.js</span>
+                            <span class="tech">LocalStorage</span>
+                            <span class="tech">HTML5/CSS3</span>
+                        </div>
+                        <div class="portfolio-btns">
+                            <a href="https://github.com/navileo/Expense-Tracker" class="btn btn-outline">GitHub</a>
+                            <a href="https://navileo.github.io/Expense-Tracker/" class="btn">Live Demo</a>
                         </div>
                     </div>
                 </div>
@@ -1477,7 +1739,7 @@ retention by 15%.    </p>
 
                         </div>
                         <div class="portfolio-btns">
-                            <a href="https://github.com/navileo/feedback-system" class="btn btn-outline">GitHub</a>
+                            <a href="https://github.com/navileo" class="btn btn-outline">GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -1539,6 +1801,24 @@ retention by 15%.    </p>
                     <p>Designing and implementing RESTful APIs for seamless data integration and real-time updates between systems.</p>
                     <a href="#contact" class="btn btn-outline">Learn More</a>
                 </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Cloud Services</h3>
+                    <p>Deploying and managing applications on cloud platforms like AWS and Firebase, ensuring high availability, scalability, and secure data storage.</p>
+                    <a href="#contact" class="btn btn-outline">Learn More</a>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon ai-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Gen AI Tools</h3>
+                    <p>Leveraging Generative AI and LLMs to automate workflows, build intelligent chatbots, and accelerate software development and documentation.</p>
+                    <a href="#contact" class="btn btn-outline">Learn More</a>
+                </div>
             </div>
         </div>
     </section>
@@ -1570,7 +1850,7 @@ retention by 15%.    </p>
                             </div>
                             <div class="contact-text">
                                 <h4>LinkedIn</h4>
-                                <a href="https://www.linkedin.com/in/naveen-kumar-v-424a34221">https://www.linkedin.com/in/naveen-kumar-v-424a34221</a>
+                                <a href="https://www.linkedin.com/in/naveen-kumar-v-424a34221" class="btn-link">Visit Profile</a>
                             </div>
                         </div>
                     </div>
@@ -1594,10 +1874,10 @@ retention by 15%.    </p>
                         </div>
                         
                         <button type="submit" class="btn btn-green" id="send-btn">Send Message</button>
-                        <div id="success-message">
+                        <div id="success-message" style="display: none; margin-top: 20px; color: var(--secondary);">
                             Message sent successfully! I'll get back to you soon.
                         </div>
-                        <div id="error-message">
+                        <div id="error-message" style="display: none; margin-top: 20px; color: #ef4444;">
                             Failed to send message. Please try again later.
                         </div>
                     </form>
@@ -1615,10 +1895,10 @@ retention by 15%.    </p>
                     <div class="footer-logo">Naveen Kumar V<span>.</span></div>
                     <p>Software Engineer specializing in full-stack web development, RESTful API design, and database optimization.</p>
                     <div class="social-links">
-                        <a href="https://github.com/navileo" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/naveen-kumar-v-424a34221/" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://github.com/navileo" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/naveen-kumar-v-424a34221/" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 
